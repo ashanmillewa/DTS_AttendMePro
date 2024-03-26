@@ -1,7 +1,7 @@
-import React from 'react'
-import './footer.css'
+import React from 'react';
+import './footer.css';
 
-const footer = () => {
+const Footer = () => {
   return (
     <footer className='footer'>
         &#169; Copyright &nbsp; <strong> DTS.</strong> &nbsp;  All Rights Reserved
@@ -10,4 +10,4 @@ Designed by &nbsp;  <a href="https://www.dockyardsolutions.lk/" className='foote
   );
 }
 
-export default footer
+export default Footer;
