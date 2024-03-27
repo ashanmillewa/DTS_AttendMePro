@@ -1,5 +1,5 @@
 .navbar{
-    background: rgb(55,53,106);
+    background: #1B3F95;
     height: 6rem;
     width: 100%;
     padding: 1rem 2rem;
@@ -10,7 +10,7 @@
 }
 
 .logo{
-    height: 5rem;
+    height: 15rem;
     width: auto;
 }
 
@@ -28,6 +28,10 @@
     color: yellow;
 }
 
+.logoutBtn{
+    margin-right: -500px;
+}
+
 .desktopMenuBtn {
     display: flex;
     align-items: center; 
@@ -36,7 +40,7 @@
     border: none;
     padding: 0 0.5rem;
     border-radius: 2rem;
-    background: white;
+    background: transparent;
     color:rgb(55,53,106);
 }
 
@@ -64,14 +68,43 @@
     color: aliceblue;
 }
 
-@media screen and (max-width: 771px) and (min-width: 400px){
+.logoutimage{
+    height: 100px;
+    margin-top: 4px;
+    margin-left: -100px;
+}
+
+@media screen and (max-width: 771px) and (min-width: 350px){
+    .logo{
+        display: none;
+        width: auto;
+        height: 50px;
+    }
     .mobMenu {
         display: flex;
+        margin-right: 110px ;
     }
     .desktopMenu {
         display: none;
     }
     .navMenu{
         display: flex;
+        margin-left: 100px;
+    }
+
+    .desktopMenuBtn{
+        width: 95px;
+    }
+    .logoutBtn{
+        display: flex;
+        margin-left:80px;
+        margin-top: 5px;
+    }
+    .navMenuMob{
+        margin-right: -100px;
+    }
+    .logoutimage{
+        height: 100px;
+        margin-left: 100px;
     }
 }
