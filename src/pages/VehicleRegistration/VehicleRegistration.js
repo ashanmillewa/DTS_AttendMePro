@@ -116,6 +116,8 @@ const RegistrationForm = () => {
   return (
     <div>
       <Header />
+
+        
       <section className="containerUser">
         <header>Vehicle Registration Form</header>
         <div className="form">
@@ -139,6 +141,7 @@ const RegistrationForm = () => {
         </div>
       </section>
       <Footer />
+  
     </div>
   );
 };

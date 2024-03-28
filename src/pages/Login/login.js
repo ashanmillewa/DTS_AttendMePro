@@ -7,11 +7,19 @@ import * as React from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
+import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
+import CssBaseline from "@mui/material/CssBaseline";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import backgroundImage from '../../assets/images/reg 9.png';
+import backgroundImageMobile from '../../assets/images/LoginMD.png';
+
+
 
 export default function Signout() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const defaultTheme = createTheme();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -19,7 +27,7 @@ export default function Signout() {
 
       const MyToken = 'dtscustomtokenforlogin';
       localStorage.setItem('token', MyToken);
-      navigate("/dailyAttendance");
+      navigate("/attendenceLog");
     } else {
       Swal.fire({
         icon: "error",
@@ -30,91 +38,163 @@ export default function Signout() {
   };
 
   return (
-    <Grid container spacing={1}>
-      <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-        <Box
-          sx={{
-            backgroundImage: `url("/Login.jpg")`,
-            backgroundSize: "cover",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            height: "100vh",
-            "@media (max-width: 600px)": {
-              backgroundImage: `url("/LoginMD.png")`,
-            },
-          }}
-        >
+    <ThemeProvider theme={defaultTheme}>
+    <Grid
+      container
+      component="main"
+
+      sx={{
+        display: "flex",
+        alignContent: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        justifyContent: "center",
+        pr: "10%",
+        pl: "10%",
+      }}
+    >
+    
+      <Grid
+        item
+        xs={12}
+        sm={12}
+        md={4}
+        xl={3}
+        sx={{
+          background: "rgba(163,189,222,0.2);",
+          WebkitBackdropFilter: "blur(1px)", // Use Webkit prefix
+          backdropFilter: "blur(1px)",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+          borderRadius: "25px"
+        }}
+      >
+        <Box>
           <Box
-            component="form"
-            padding={{ xs: 2, sm: 4, lg: 12, xl: 12 }}
-            paddingTop={{ xs: 4, sm: 4, lg: 8, xl: 12 }}
-            paddingBottom={{ xs: 4, sm: 4, lg: 8, xl: 12 }}
             sx={{
-              width: "100%",
-              maxWidth: "300px",
-              backgroundColor: "rgba(255, 255, 255, 0.8)",
-              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.6)",
-              borderRadius: "10px",
-              alignItems: "center",
+              my: 4,
+              mx: 1,
               display: "flex",
               flexDirection: "column",
-              justifyContent: "center",
+              alignItems: "center",
             }}
           >
+            {/* <img
+              src={mainlogo}
+              alt="Logo"
+              style={{
+                width: "200px",
+                height: "auto",
+              }}
+            /> */}
             <Typography
               component="h1"
-              variant="h4"
-              padding={1}
-              fontFamily={"sans-serif"}
-              fontSize={24}
+              variant="h5"
               sx={{
+                my: 2,
+                fontFamily: "segoe ui",
                 fontWeight: "bold",
-                borderBottom: "2px solid",
-                marginBottom: 1,
+                color: "Black",
               }}
             >
-              Log In
+              Log in to your Account
             </Typography>
-            <TextField
-              required
-              fullWidth
-              label="Username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              sx={{ margin: "8px", fontFamily: "Times New Roman" }}
-              variant="standard"
-            />
-            <TextField
-              required
-              fullWidth
-              label="Password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              sx={{ margin: "8px", fontFamily: "Times New Roman" }}
-              variant="standard"
-            />
-            <Button
-              fullWidth
-              variant="contained"
-              onClick={handleSubmit}
-              size="small"
-              sx={{
-                padding: "10px",
-                borderRadius: "10px",
-                marginTop: "8px",
-                fontWeight: "bold",
-              }}
-              autoFocus
+
+     
+          </Box>
+
+          <Box
+            sx={{
+              my: 2,
+              mx: 1,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Box
+              sx={{ mt: -2 }}
             >
-              Login
-            </Button>
+              <Grid
+                item
+                xs={12}
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <EmailOutlinedIcon
+                  sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                />
+                <TextField
+                required
+                fullWidth
+                label="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                variant="outlined" // Change the variant to "outlined"
+                  margin="normal"
+                  autoComplete="email"  
+                  autoFocus
+                  autoCapitalize="none"
+                  autocompletetype="email"
+                  inputMode="text"
+                  type="text"
+                  size="small" // Set the size to "small"
+                  InputProps={{ disableUnderline: true }}
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.5)",
+                    borderRadius: "4px",
+                  }}
+                />
+              </Grid>
+              <Grid
+                item
+                xs={12}
+                sx={{ display: "flex", alignItems: "center" }}
+              >
+                <VpnKeyOutlinedIcon
+                  sx={{ color: "action.active", mr: 1, my: 1 }}
+                />
+                <TextField
+                  required
+                  margin="normal"
+                  autoComplete="password"
+                  label="Password"
+                  autoFocus
+                  fullWidth
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoCapitalize="none"
+                  autocompletetype="password"
+                  inputMode="text"
+                  type="password"
+                  variant="outlined" // Change the variant to "outlined"
+                  size="small" 
+                  InputProps={{ disableUnderline: true }}
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.5)",
+                    borderRadius: "4px",
+                  }}
+                />
+              </Grid>
+
+              <Button
+                // type="submit"
+                fullWidth
+                variant="contained"
+                onClick={handleSubmit}
+                sx={{ mt: 2, mb: 1 }}
+                autoFocus
+              >
+                Log In
+              </Button>
+           
+            </Box>
           </Box>
         </Box>
+        {/* <Copyright sx={{ mt: 2 }} /> */}
       </Grid>
     </Grid>
+  </ThemeProvider>
   );
 }
