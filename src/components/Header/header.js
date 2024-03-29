@@ -58,7 +58,8 @@ const Navbar = () => {
           </Link>
           <div className="logoutBtn">
             <button className="desktopMenuBtn" onClick={handleLogout}>
-              <LuLogOut className="logoutIcon"/><p className="logout">Log Out</p>
+              <LuLogOut className="logoutIcon"/>
+              <p className="logout">Log Out</p>
             </button>
           </div>
         </div>

@@ -13,7 +13,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import backgroundImage from '../../assets/images/reg 9.png';
 import backgroundImageMobile from '../../assets/images/LoginMD.png';
-
+import LogoImg from '../../assets/images/attendme1 - Copy.png'
 
 
 export default function Signout() {
@@ -81,14 +81,14 @@ export default function Signout() {
               alignItems: "center",
             }}
           >
-            {/* <img
-              src={mainlogo}
+            <img
+              src={LogoImg}
               alt="Logo"
               style={{
                 width: "200px",
                 height: "auto",
               }}
-            /> */}
+            />
             <Typography
               component="h1"
               variant="h5"

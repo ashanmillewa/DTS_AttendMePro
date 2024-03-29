@@ -87,6 +87,7 @@
 .logoutIcon{
     color: white;
     height: 10vh;
+    width: 3vh;
   
 }
 
@@ -98,7 +99,7 @@
     }
     .mobMenu {
         display: flex;
-        margin-right: 110px ;
+        margin-right: 10px ;
     }
     .desktopMenu {
         display: none;
@@ -107,21 +108,14 @@
         display: flex;
         margin-left: 100px;
     }
-
-    .desktopMenuBtn{
-        width: 95px;
-    }
-    .logoutBtn{
-        display: flex;
-        margin-left:100px;
-        margin-top: 5px;
-    }
     .navMenuMob{
         margin-left: 250px;
         z-index: 100;
     }
-    .logoutimage{
-        height: 100px;
-        margin-right: 130px;
+    .logoutBtn{
+        display: flex;
+        margin-left:5px;
+        margin-top: 1px;
     }
+    
 }

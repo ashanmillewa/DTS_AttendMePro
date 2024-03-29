@@ -140,7 +140,9 @@ const RegistrationForm = () => {
           <button type="button" onClick={handleSubmit}>Submit</button>
         </div>
       </section>
+      <div  className="foot">
       <Footer />
+      </div>
   
     </div>
   );
