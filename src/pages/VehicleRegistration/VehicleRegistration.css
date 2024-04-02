@@ -19,11 +19,9 @@ html, body {
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  /* margin-top: -1%; */
 }
 
-.foot{
-  margin-top: 789px;
-}
 
 .containerUser header {
   font-size: 1.5rem;
@@ -68,17 +66,13 @@ html, body {
   transition: all 0.2s ease;
   background: #1B3F95
 }
+.foot{
+  margin-top: 39.9%;
+}
 
-@media screen and (max-width: 500px) and (max-height:800px) {
-  .containerUser {
-    padding: 15px;
-    border-radius: 20px;
-    margin-top: 20px;
-    height: 450px;
-    margin-top: 10px;
-  }
-  .foot{
-    margin-top: 100px;
 
-  }
+@media screen and (max-width: 350px) {
+  .foot {
+    width: 100%;
+    }
 }

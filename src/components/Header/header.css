@@ -93,13 +93,13 @@
 
 @media screen and (max-width: 771px) and (min-width: 350px){
     .logo{
-        display: none;
+        display: flex;
         width: auto;
-        height: 50px;
+        height: 100px;
     }
     .mobMenu {
         display: flex;
-        margin-right: 10px ;
+        margin-left: -100px ;
     }
     .desktopMenu {
         display: none;
