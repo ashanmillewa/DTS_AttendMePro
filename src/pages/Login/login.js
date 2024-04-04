@@ -11,22 +11,21 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import VpnKeyOutlinedIcon from "@mui/icons-material/VpnKeyOutlined";
 import CssBaseline from "@mui/material/CssBaseline";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import backgroundImage from '../../assets/images/reg 9.png';
-import backgroundImageMobile from '../../assets/images/LoginMD.png';
-import LogoImg from '../../assets/images/attendme1 - Copy1.png'
-
-export default function Signout() {
+import backgroundImage from "../../assets/images/reg 9.png";
+import LogoImg from "../../assets/images/attendme1 - Copy1.png";
+import './login.css';
+export default function Signout(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const defaultTheme = createTheme();
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
     if (username === "Admin" && password === "Admin@123") {
-      const MyToken = 'dtscustomtokenforlogin';
-      localStorage.setItem('token', MyToken);
+      const MyToken = "dtscustomtokenforlogin";
+      localStorage.setItem("token", MyToken);
       navigate("/attendenceLog");
     } else {
       Swal.fire({
@@ -39,6 +38,7 @@ export default function Signout() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <CssBaseline />
       <Grid
         container
         component="main"
@@ -50,8 +50,7 @@ export default function Signout() {
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          justifyContent: "center",
-          pr: "10%",
+          pr: "11%",
           pl: "10%",
         }}
       >
@@ -63,10 +62,10 @@ export default function Signout() {
           xl={3}
           sx={{
             background: "rgba(163,189,222,0.2);",
-            WebkitBackdropFilter: "blur(1px)", // Use Webkit prefix
+            WebkitBackdropFilter: "blur(1px)",
             backdropFilter: "blur(1px)",
             border: "1px solid rgba(255, 255, 255, 0.3)",
-            borderRadius: "25px"
+            borderRadius: "25px",
           }}
         >
           <Box>
@@ -102,8 +101,8 @@ export default function Signout() {
             </Box>
 
             <Box
-              component="form" // Form element for handling submission
-              onSubmit={handleSubmit} // Handle form submission
+              component="form"
+              onSubmit={handleSubmit}
               sx={{
                 my: 2,
                 mx: 1,
@@ -118,7 +117,9 @@ export default function Signout() {
                   xs={12}
                   sx={{ display: "flex", alignItems: "center" }}
                 >
-                  <EmailOutlinedIcon sx={{ color: "action.active", mr: 1, my: 0.5 }} />
+                  <EmailOutlinedIcon
+                    sx={{ color: "action.active", mr: 1, my: 0.5 }}
+                  />
                   <TextField
                     required
                     fullWidth
@@ -146,7 +147,9 @@ export default function Signout() {
                   xs={12}
                   sx={{ display: "flex", alignItems: "center" }}
                 >
-                  <VpnKeyOutlinedIcon sx={{ color: "action.active", mr: 1, my: 1 }} />
+                  <VpnKeyOutlinedIcon
+                    sx={{ color: "action.active", mr: 1, my: 1 }}
+                  />
                   <TextField
                     required
                     margin="normal"
@@ -182,6 +185,36 @@ export default function Signout() {
               </Box>
             </Box>
           </Box>
+
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            align="center"
+            style={{
+              position: "inherit",
+              left: 0,
+              bottom: 0,
+              width: "100%",
+              padding: "8px 0", 
+              // backgroundColor:"#E3E7F1",
+              borderRadius:"10px"
+            }}
+            {...props}
+          >
+            {"Copyright © "}
+    
+            <a
+              href="https://www.dockyardsolutions.lk/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              Dockyard Total Solutions(Pvt)Ltd.
+            </a>{" "}
+    
+            {new Date().getFullYear()}
+            {"."}
+          </Typography>
         </Grid>
       </Grid>
     </ThemeProvider>
