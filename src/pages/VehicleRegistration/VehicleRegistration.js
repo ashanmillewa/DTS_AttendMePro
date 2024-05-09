@@ -3,6 +3,7 @@ import "./VehicleRegistration.css";
 import Swal from "sweetalert2";
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
+import { useEffect } from "react";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,18 @@ const RegistrationForm = () => {
     VehicleNo: false,
     VehicleRfidTag: false,
   });
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const barcodeNo = urlParams.get("barcodeNo");
+    if (barcodeNo) {
+      // Set the BarcodeNo value to the VehicleRfidTag field
+      setFormData((prevState) => ({
+        ...prevState,
+        VehicleRfidTag: barcodeNo,
+      }));
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
