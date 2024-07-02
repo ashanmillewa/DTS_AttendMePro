@@ -66,7 +66,9 @@ export default function CustomizedTables() {
         setServiceNo("");
         setBarcodeDate(dayjs().format("YYYY-MM-DD"));
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error selecting person data:", error);
+    }
   };
 
   useEffect(() => {
@@ -116,18 +118,10 @@ export default function CustomizedTables() {
                 <div style={{ display: "flex", justifyContent: "flex-end" }}>
                   <DatePicker
                     label="Date Selector"
-                    defaultValue={dayjs(dayjs(), "YYYY")}
-                    picker="year"
-                    size={"small"}
-                    inputReadOnly={true}
-                    allowClear={false}
-                    style={{
-                      backgroundColor: "#EB984E",
-                      borderTopRightRadius: 20,
-                      borderBottomRightRadius: 20,
-                      border: "none",
-                      fontSize: "20px",
-                    }}
+                    value={dayjs(barcodeDate)}
+                    onChange={(newValue) => setBarcodeDate(newValue.format("YYYY-MM-DD"))}
+                    inputFormat="YYYY-MM-DD"
+                    renderInput={(params) => <TextField {...params} />}
                   />
 
                   <TextField
@@ -363,3 +357,14 @@ export default function CustomizedTables() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+

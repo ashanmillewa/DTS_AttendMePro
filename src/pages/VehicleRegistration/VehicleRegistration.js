@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import "./VehicleRegistration.css";
 import Swal from "sweetalert2";
 import Header from "../../components/Header/header";
 import Footer from "../../components/Footer/footer";
-import { useEffect } from "react";
 
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
@@ -14,8 +14,6 @@ const RegistrationForm = () => {
   });
 
   const [formErrors, setFormErrors] = useState({
-    Sno: false,
-    Rname: false,
     VehicleNo: false,
     VehicleRfidTag: false,
   });
@@ -42,7 +40,7 @@ const RegistrationForm = () => {
         newValue = newValue.slice(0, 7);
       }
     } else if (name === "Rname") {
-      newValue = value.replace(/[^a-zA-Z\s.]/g, "");
+      newValue = value.replace(/[^a-zA-Z\s.]/g, "").toUpperCase();
     } else if (name === "VehicleRfidTag") {
       newValue = value.replace(/\D/g, "");
       if (newValue.length > 6) {
@@ -50,7 +48,7 @@ const RegistrationForm = () => {
       }
     } else if (name === "VehicleNo") {
       //"WP CAD-1010", "WP CA-1010", "146-1545"
-      newValue = value.replace(/[^a-zA-Z0-9\s-]/g, "");
+      newValue = value.replace(/[^a-zA-Z0-9\s-]/g, "").toUpperCase();
     }
 
     setFormData((prevState) => ({
@@ -64,12 +62,14 @@ const RegistrationForm = () => {
     const errors = {};
     let hasErrors = false;
 
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key]) {
-        errors[key] = true;
-        hasErrors = true;
-      }
-    });
+    if (!formData.VehicleNo) {
+      errors.VehicleNo = true;
+      hasErrors = true;
+    }
+    if (!formData.VehicleRfidTag) {
+      errors.VehicleRfidTag = true;
+      hasErrors = true;
+    }
 
     if (hasErrors) {
       setFormErrors(errors);
@@ -142,11 +142,7 @@ const RegistrationForm = () => {
               value={formData.Sno}
               onChange={handleChange}
               placeholder="Enter Service Number"
-              required
             />
-            {formErrors.Sno && (
-              <span className="error-message">Service Number is required</span>
-            )}
           </div>
           <div className="input-box">
             <input
@@ -155,11 +151,7 @@ const RegistrationForm = () => {
               value={formData.Rname}
               onChange={handleChange}
               placeholder="Enter Employee Name"
-              required
             />
-            {formErrors.Rname && (
-              <span className="error-message">Employee Name is required</span>
-            )}
           </div>
           <div className="input-box">
             <input
