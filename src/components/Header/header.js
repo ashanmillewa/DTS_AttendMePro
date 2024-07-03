@@ -1,7 +1,6 @@
 import "./header.css";
 import React, { useState } from "react";
 import logo from "../../assets/images/attendme1.png";
-import logoutIMG from "../../assets/images/logoutImg.png";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { IoMenu } from "react-icons/io5";
 import { LuLogOut } from "react-icons/lu";
